@@ -17,7 +17,7 @@ class Scheme extends Component {
   render() {
 
     return (
-      <div className='scheme-wrapper'>
+      <div className='scheme-wrapper' style={this.props.isSchemeVisible ? {} : {display: "none"}}>
         <div className='scheme-btn-group'>
           <button className='scheme-button' onClick={this.props.removeAll}> Clear all </button>
           <button className='scheme-button' onClick={this.props.addSection}> Add progression </button>
@@ -55,7 +55,8 @@ class Scheme extends Component {
 }
 
 Scheme.propTypes = {
-  sections: PropTypes.array
+  sections: PropTypes.array,
+  isSchemeVisible: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {
@@ -63,7 +64,7 @@ const mapStateToProps = (state) => {
     intro: state.intro,
     sections: state.sections,
     ending: state.ending,
-
+    isSchemeVisible: state.ui.isSchemeVisible
   }
 }
 

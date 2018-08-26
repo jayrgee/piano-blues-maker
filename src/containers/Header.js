@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Settings from '../containers/Settings'
 import {play, stop} from '../actions/player'
+import {toggleScheme} from '../actions/ui'
 import {connect} from 'react-redux'
 import PlayButton from '../components/PlayButton'
 
@@ -21,6 +22,7 @@ class Header extends Component {
         </div>
         <div className='header-panel'>
           <PlayButton {...this.props} />           
+          <button className='button-header button-settings' onClick={this.props.toggleScheme} />
           <button className='button-header button-settings' onClick={this.toggleSettings} />
         </div>
         <Settings visible={this.state.showSettings} />
@@ -40,7 +42,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     play: () => dispatch(play()),
-    stop: () => dispatch(stop())
+    stop: () => dispatch(stop()),
+    toggleScheme: () => dispatch(toggleScheme())
   }
 }
 

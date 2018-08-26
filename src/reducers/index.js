@@ -4,6 +4,7 @@ import intro from './intro'
 import ending from './ending'
 import sections from './sections'
 import sheet from './sheet'
+import ui from './ui'
 import { combineReducers } from 'redux'
 
 const rootReducer = combineReducers({
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     intro,
     ending,
     sections,
-    sheet
+    sheet,
+    ui
 })
 
 export default rootReducer
