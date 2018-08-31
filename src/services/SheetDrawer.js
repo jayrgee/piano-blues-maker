@@ -30,11 +30,17 @@ function disributeValue(arr, value, precision) {
 }
 
 class SheetDrawer {
-  constructor(container, sections, { width, signature, scale }) {
+  constructor(container, sections, { width, signature, scale, isSchemeVisible }) {
+    console.log(`SheetDrawer.constructor ${width} ${isSchemeVisible}`);
     this.sheetContainer = container;
     this.sections = sections;
     this.scale = scale / 100;
-    this.svgWidth = Math.max(width - SCHEME_WIDTH, SHEET_MIN_WIDTH) / this.scale;
+    
+    //this.svgWidth = Math.max(width - SCHEME_WIDTH, SHEET_MIN_WIDTH) / this.scale;
+    this.svgWidth = isSchemeVisible
+      ? Math.max(width - SCHEME_WIDTH, SHEET_MIN_WIDTH) / this.scale
+      : Math.max(width, SHEET_MIN_WIDTH) / this.scale;
+
     this.sheetWidth = this.svgWidth - PADDING_LEFT * 2;
 
     this.beams = [];

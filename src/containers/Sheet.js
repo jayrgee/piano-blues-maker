@@ -12,7 +12,7 @@ class Sheet extends Component {
     new SheetDrawer(
       this.sheetContainer,
       [this.props.intro,...this.props.sections,this.props.ending].filter(x => x !== null),
-      {width: this.state.windowWidth, signature:this.props.signature,scale: this.props.scale}   
+      {width: this.state.windowWidth, signature:this.props.signature,scale: this.props.scale, isSchemeVisible: this.props.isSchemeVisible}
     ).draw();
   }  
 
@@ -58,6 +58,7 @@ Sheet.propTypes = {
   width: PropTypes.number,
   intro: PropTypes.object,
   ending: PropTypes.object,
+  isSchemeVisible: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {
@@ -66,8 +67,9 @@ const mapStateToProps = (state) => {
       scale: state.settings.scale,
       intro: state.intro,
       sections: state.sections,
-      ending: state.ending
-  }
+      ending: state.ending,
+      isSchemeVisible: state.ui.isSchemeVisible
+    }
 }
 
 export default connect(mapStateToProps)(Sheet);

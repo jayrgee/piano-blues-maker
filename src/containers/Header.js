@@ -17,12 +17,15 @@ class Header extends Component {
   render() {
     return (
       <div className='header'>
+        <div className='header-panel'>
+          <button className='button-header button-settings' onClick={this.props.toggleScheme} />
+        </div>
+
         <div className='logo-wrapper'>
           <div className='logo' />
         </div>
         <div className='header-panel'>
           <PlayButton {...this.props} />           
-          <button className='button-header button-settings' onClick={this.props.toggleScheme} />
           <button className='button-header button-settings' onClick={this.toggleSettings} />
         </div>
         <Settings visible={this.state.showSettings} />
